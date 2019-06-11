@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/retronator/static/css/main.34de6062.chunk.css",
+    "main.js": "/retronator/static/js/main.9df64f81.chunk.js",
+    "main.js.map": "/retronator/static/js/main.9df64f81.chunk.js.map",
+    "runtime~main.js": "/retronator/static/js/runtime~main.73db179d.js",
+    "runtime~main.js.map": "/retronator/static/js/runtime~main.73db179d.js.map",
+    "static/js/2.dba58bda.chunk.js": "/retronator/static/js/2.dba58bda.chunk.js",
+    "static/js/2.dba58bda.chunk.js.map": "/retronator/static/js/2.dba58bda.chunk.js.map",
+    "index.html": "/retronator/index.html",
+    "precache-manifest.404b842a01e2581bec5631ef43e2ffae.js": "/retronator/precache-manifest.404b842a01e2581bec5631ef43e2ffae.js",
+    "service-worker.js": "/retronator/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/retronator/static/css/main.34de6062.chunk.css.map"
+  }
+}
