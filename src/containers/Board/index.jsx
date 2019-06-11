@@ -2,7 +2,7 @@
 import React from "react";
 import { withStyles } from "@material-ui/styles";
 import { Button, Grid, IconButton, Paper, Typography as Text } from "@material-ui/core";
-import KanbanCard from "../../components/KanbanCard";
+import RetroCard from "../../components/RetroCard";
 import { Add, Edit, Delete } from "@material-ui/icons";
 
 const styles = theme => ({
@@ -34,43 +34,46 @@ const styles = theme => ({
     top: 0,
     right: 10,
   },
+  addButton: {
+    margin: "10px 0",
+  },
 });
 
-class KanbanBoard extends React.Component {
+class RetroBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       columns: [
         {
           id: 0,
-          name: "To Do",
-          headerColor: "#f44336",
-          cards: [{ id: 0, content: "Task 4" }],
+          name: "What Went Well",
+          headerColor: "#4CAF50",
+          cards: [],
         },
         {
           id: 1,
-          name: "In Development",
-          headerColor: "#9c27b0",
-          cards: [{ id: 0, content: "Task 3" }],
+          name: "What needed improvement",
+          headerColor: "#F44336",
+          cards: [],
         },
         {
           id: 2,
-          name: "In Test",
-          headerColor: "#3f51b5",
-          cards: [{ id: 0, content: "Task 2" }],
+          name: "Ideas",
+          headerColor: "#3F51B5",
+          cards: [],
         },
         {
           id: 3,
-          name: "Done",
-          headerColor: "#8bc34a",
-          cards: [{ id: 0, content: "Task 1" }],
+          name: "Action Items",
+          headerColor: "#673AB7",
+          cards: [],
         },
       ],
     };
   }
 
   componentDidMount() {
-    const columns = JSON.parse(localStorage.getItem("kanbanBoard"));
+    const columns = JSON.parse(localStorage.getItem("retroBoard"));
     if (columns) {
       this.setState({ columns });
     }
@@ -78,7 +81,7 @@ class KanbanBoard extends React.Component {
 
   componentDidUpdate() {
     const { columns } = this.state;
-    localStorage.setItem("kanbanBoard", JSON.stringify(columns));
+    localStorage.setItem("retroBoard", JSON.stringify(columns));
   }
 
   handlers = {
@@ -117,7 +120,7 @@ class KanbanBoard extends React.Component {
       this.setState({ columns });
     },
 
-    handleAddTask: (column, index) => {
+    handleAddCard: (column, index) => {
       const { columns } = this.state;
       let total = 0;
       const totalCards = () => {
@@ -126,7 +129,7 @@ class KanbanBoard extends React.Component {
         }
         return total;
       };
-      const newCardContent = window.prompt("Task Name:", `Task ${totalCards() + 1}`);
+      const newCardContent = window.prompt("Card Name:", `Card ${totalCards() + 1}`);
       const newCard = {
         id: column.cards.length,
         content: newCardContent,
@@ -165,18 +168,31 @@ class KanbanBoard extends React.Component {
       columns[columnIndex].cards.splice(cardIndex, 1);
       this.setState({ columns });
     },
+
+    handleAddVote: (columnIndex, cardIndex) => {
+      const { columns } = this.state;
+      let card = columns[columnIndex].cards[cardIndex];
+      if (!card.votes) {
+        card.votes = 0;
+        card.votes += 1;
+        card.hasVote = true;
+      } else {
+        card.votes -= 1;
+        card.hasVote = false;
+      }
+      this.setState({ columns });
+    },
   };
 
   render() {
     const { classes } = this.props;
     const { columns } = this.state;
-    const { handleAddColumn, handleEditColumn, handleRemoveColumn, handleAddTask } = this.handlers;
+    const { handleAddColumn, handleEditColumn, handleRemoveColumn, handleAddCard } = this.handlers;
 
     return (
       <div className={classes.root}>
-        <Button onClick={() => handleAddColumn()}>
+        <Button color="secondary" variant="contained" onClick={() => handleAddColumn()} className={classes.addButton}>
           <Add />
-          Add a column
         </Button>
         <Grid container direction="row" spacing={3}>
           {columns.map((column, columnIndex) => {
@@ -196,11 +212,10 @@ class KanbanBoard extends React.Component {
                       </IconButton>
                     </div>
                   </Paper>
-                  <KanbanCard column={{ index: columnIndex, all: columns, ...column }} handlers={this.handlers} />
+                  <RetroCard column={{ index: columnIndex, all: columns, ...column }} handlers={this.handlers} />
                 </Paper>
-                <Button onClick={() => handleAddTask(column, columnIndex)}>
+                <Button color="secondary" variant="contained" onClick={() => handleAddCard(column, columnIndex)} className={classes.addButton}>
                   <Add />
-                  Add a task
                 </Button>
               </Grid>
             );
@@ -211,4 +226,4 @@ class KanbanBoard extends React.Component {
   }
 }
 
-export default withStyles(styles)(KanbanBoard);
+export default withStyles(styles)(RetroBoard);

@@ -2,7 +2,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { IconButton, Paper, Typography as Text } from "@material-ui/core";
-import { ChevronLeft, ChevronRight, Edit, Delete } from "@material-ui/icons";
+import { ChevronLeft, ChevronRight, Edit, Delete, ThumbUp, ThumbUpOutlined } from "@material-ui/icons";
 
 const styles = makeStyles(theme => ({
   root: {
@@ -22,7 +22,12 @@ const styles = makeStyles(theme => ({
     padding: 8,
     flex: "1 1 auto",
   },
-  iconButtons: {
+  leftIcons: {
+    position: "absolute",
+    bottom: 5,
+    left: 5,
+  },
+  rightIcons: {
     position: "absolute",
     bottom: 5,
     right: 5,
@@ -32,7 +37,7 @@ const styles = makeStyles(theme => ({
 function KanbanCard(props) {
   const classes = styles();
   const { column, handlers } = props;
-  const { handleRemoveTask, handleMoveTask, handleEditTask } = handlers;
+  const { handleAddVote, handleRemoveTask, handleMoveTask, handleEditTask } = handlers;
   const columnIndex = column.index;
   return column.cards.map((card, cardIndex) => {
     return (
@@ -48,7 +53,13 @@ function KanbanCard(props) {
             <ChevronRight className={classes.arrow} />
           </IconButton>
         )}
-        <div className={classes.iconButtons}>
+        <div className={classes.leftIcons}>
+          <IconButton aria-label="Edit" color="inherit" onClick={() => handleAddVote(columnIndex, cardIndex)} size="small">
+            {card.hasVote ? <ThumbUp fontSize="inherit" /> : <ThumbUpOutlined fontSize="inherit" />}
+          </IconButton>
+          <Text variant="overline">{card.votes || 0}</Text>
+        </div>
+        <div className={classes.rightIcons}>
           <IconButton aria-label="Edit" color="inherit" onClick={() => handleEditTask(columnIndex, cardIndex)} size="small">
             <Edit fontSize="inherit" />
           </IconButton>
