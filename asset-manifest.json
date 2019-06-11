@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/retronator/static/css/main.34de6062.chunk.css",
-    "main.js": "/retronator/static/js/main.9df64f81.chunk.js",
-    "main.js.map": "/retronator/static/js/main.9df64f81.chunk.js.map",
+    "main.js": "/retronator/static/js/main.8f37fe22.chunk.js",
+    "main.js.map": "/retronator/static/js/main.8f37fe22.chunk.js.map",
     "runtime~main.js": "/retronator/static/js/runtime~main.73db179d.js",
     "runtime~main.js.map": "/retronator/static/js/runtime~main.73db179d.js.map",
-    "static/js/2.dba58bda.chunk.js": "/retronator/static/js/2.dba58bda.chunk.js",
-    "static/js/2.dba58bda.chunk.js.map": "/retronator/static/js/2.dba58bda.chunk.js.map",
+    "static/js/2.65c55dd9.chunk.js": "/retronator/static/js/2.65c55dd9.chunk.js",
+    "static/js/2.65c55dd9.chunk.js.map": "/retronator/static/js/2.65c55dd9.chunk.js.map",
     "index.html": "/retronator/index.html",
-    "precache-manifest.404b842a01e2581bec5631ef43e2ffae.js": "/retronator/precache-manifest.404b842a01e2581bec5631ef43e2ffae.js",
+    "precache-manifest.4a3d76a6f427f3f8e30e726a1672b086.js": "/retronator/precache-manifest.4a3d76a6f427f3f8e30e726a1672b086.js",
     "service-worker.js": "/retronator/service-worker.js",
     "static/css/main.34de6062.chunk.css.map": "/retronator/static/css/main.34de6062.chunk.css.map"
   }
