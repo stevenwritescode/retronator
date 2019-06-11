@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/retronator/precache-manifest.4a3d76a6f427f3f8e30e726a1672b086.js"
+  "/retronator/precache-manifest.348611ba3fd70b207edc8d7d658b905d.js"
 );
 
 self.addEventListener('message', (event) => {

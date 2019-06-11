@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2d38ac310bf1cab601cff0ee73b1fe7a",
+    "revision": "6ebf49e5fc8b0cf057993e75862df0ca",
     "url": "/retronator/index.html"
   },
   {
